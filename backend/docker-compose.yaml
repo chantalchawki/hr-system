@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  server:
+    build: .
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - database
+    volumes:
+      - .:/app:rw
+      - /app/node_modules
+
+  database:
+    image: mongo
+    volumes:
+      - db-volume:/data/db
+
+volumes:
+    db-volume:
